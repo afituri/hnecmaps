@@ -1,8 +1,5 @@
 var url=require('url'),
   parserMgr=require('./csvparser'),
-  csv = require("csv"),
-  Step = require("step"),
-  fs = require('fs'),
   centers = {};
 
 Step(
