@@ -97,10 +97,15 @@ $(document).ready(function(){
         flag5=false;
       }
       var latlng = new google.maps.LatLng(parseFloat(results.subcons[constitId].mahallat[mahalla].villages[village].centers[key].longtit), parseFloat(results.subcons[constitId].mahallat[mahalla].villages[village].centers[key].langtit));
-      new google.maps.Marker({
+      var marker = new google.maps.Marker({
           position: latlng,
           map: map,
           title : results.subcons[constitId].mahallat[mahalla].villages[village].centers[key].name
+      });
+      var infowindow = new google.maps.InfoWindow();
+      infowindow.setContent('<b>'+results.subcons[constitId].mahallat[mahalla].villages[village].centers[key].name+'</b>');
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map, marker);
       });
     });
   }

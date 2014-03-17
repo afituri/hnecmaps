@@ -16,7 +16,11 @@ exports.getMgr = {
 
   handleGetIndex : function (req,res,cb){
     //var centers = parserMgr.parseCenters();
-    res.locals.centers=centers;
+    res.locals={
+      arUrl : "/ar",
+      enUrl : "/en",
+      centers : centers
+    }
     cb(res);
 
   },

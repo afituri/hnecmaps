@@ -56,7 +56,7 @@ app.get('/:locale', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  setlang(req);
+  setlang(req,res);
   getMgr.handleGetIndex(req.params,res,function(results){
     res.render('index');
   });
@@ -66,16 +66,18 @@ app.get('/', function (req, res) {
 app.getDelay = function (req, res) {
   return url.parse(req.url, true).query.delay || 0;
 };
-function setlang(req){
-  if(!req.session.language)
-    req.session.language ="ar";
-  i18n.setLocale(req.session.language);
+function setlang(req,res){
+  if(!req.cookies.locale)
+    req.cookies.locale ="ar";
+  i18n.setLocale(req.cookies.locale);
+  res.cookie('locale', req.cookies.locale);
 }
 function setdeflan(req,res){
   i18n.setLocale(req.params.locale);
   req.session.language = req.params.locale;
   res.cookie('locale', req.params.locale);
 }
-
 // startup
-app.listen(3002);
+server = app.listen(3002);
+
+console.log("Listening on port %d in %s mode", server.address().port, app.settings.env);
