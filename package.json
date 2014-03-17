@@ -6,6 +6,7 @@
         "hbs": "2.5.0",
         "csv": "0.3.7",
         "handlebars-paginate":"0.0.1",
-        "trim": "0.0.1"
+        "trim": "0.0.1",
+        "step": "0.0.5"
     }
 }
