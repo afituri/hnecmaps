@@ -4,11 +4,9 @@ var express = require('express'),
     i18n = require('i18n'),
     url = require('url'),
     hbs = require('hbs'),
-    mathjs = require('mathjs'),
     getMgr = require('./app/get').getMgr,
     hbsMgr = require('./app/hbshelpers'),
     app  = express();
-    math = mathjs();
     store  = new express.session.MemoryStore;
 
 // minimal config
